@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {handleDragStart} from "./styledComponents";
 import Flicking, {ViewportSlot} from "@egjs/react-flicking";
 import {Arrow, AutoPlay} from "@egjs/flicking-plugins";
-import {fr_pdca_detailed, fr_pdca_short, imgList} from "../assests";
+import {en_pdca_detailed, en_pdca_short, imgList} from "../assests";
 
 const ESCAPE_KEYS = ["27", "Escape"];
 
@@ -269,18 +269,18 @@ function Content() {
         <PhotoCarousel focusState={focusState}/>
         {focusState === "" && <StyledDiv className={"pdca"}>
             <Quarter className="top-left" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {fr_pdca_short["top-left"]}
+                {en_pdca_short["top-left"]}
             </Quarter>
             <Quarter className="top-right" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {fr_pdca_short["top-right"]}
+                {en_pdca_short["top-right"]}
             </Quarter>
             <Quarter className="bottom-left"
                      onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {fr_pdca_short["bottom-left"]}
+                {en_pdca_short["bottom-left"]}
             </Quarter>
             <Quarter className="bottom-right"
                      onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {fr_pdca_short["bottom-right"]}
+                {en_pdca_short["bottom-right"]}
             </Quarter>
         </StyledDiv>}
         {focusState !== "" && <StyledDiv className={"detailed"}>
@@ -291,10 +291,10 @@ function Content() {
                       onChanged={(e) => {
                           setFocus(findState(e.index))
                       }}>
-                <QuarterDiv className={"top-left"}><Text>{fr_pdca_detailed["top-left"]}</Text></QuarterDiv>
-                <QuarterDiv className={"top-right"}><Text>{fr_pdca_detailed["top-right"]}</Text></QuarterDiv>
-                <QuarterDiv className={"bottom-left"}><Text>{fr_pdca_detailed["bottom-left"]}</Text></QuarterDiv>
-                <QuarterDiv className={"bottom-right"}><Text>{fr_pdca_detailed["bottom-right"]}</Text></QuarterDiv>
+                <QuarterDiv className={"top-left"}><Text>{en_pdca_detailed["top-left"]}</Text></QuarterDiv>
+                <QuarterDiv className={"top-right"}><Text>{en_pdca_detailed["top-right"]}</Text></QuarterDiv>
+                <QuarterDiv className={"bottom-left"}><Text>{en_pdca_detailed["bottom-left"]}</Text></QuarterDiv>
+                <QuarterDiv className={"bottom-right"}><Text>{en_pdca_detailed["bottom-right"]}</Text></QuarterDiv>
                 <ViewportSlot>
                     <span className="flicking-arrow-prev"></span>
                     <span className="flicking-arrow-next"></span>
