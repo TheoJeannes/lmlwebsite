@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'BaskervilleOldFace';
+    src: local('BaskervilleOldFace'), url(../resources/fonts/BASKVILL.ttf) format('opentype');
+}
+
+.flicking-pagination-bullet{
+    background-color: rgb(10 10 10 / 50%);
+}
+
+.flicking-pagination-bullet-active{
+    background-color: #28313e;
+}
