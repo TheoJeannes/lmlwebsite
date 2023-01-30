@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, createRef} from "react";
+import React, {createRef, useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 import {handleDragStart} from "./styledComponents";
 import Flicking, {ViewportSlot} from "@egjs/react-flicking";

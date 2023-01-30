@@ -20,13 +20,13 @@ const Body = styled.div`
 `
 
 root.render(
-      <Body>
-          <Navbar/>
-          <Content />
-          <Clients />
-          <Contacts/>
-          <Footer />
-      </Body>
+    <Body>
+        <Navbar/>
+        <Content/>
+        <Clients/>
+        <Contacts/>
+        <Footer/>
+    </Body>
 );
 
 // If you want to start measuring performance in your app, pass a function

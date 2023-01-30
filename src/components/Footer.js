@@ -18,7 +18,7 @@ const Box = styled.div`
 
 class Footer extends React.Component {
     render() {
-        return <Box  id={'about'}>
+        return <Box id={'about'}>
             © LML Consulting - Tous droits réservés
         </Box>;
     }

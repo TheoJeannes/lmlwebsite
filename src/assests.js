@@ -1,13 +1,10 @@
 import img1 from "./resources/content/   1.jpg"
 import img2 from "./resources/content/   2.jpg"
 import img3 from "./resources/content/   3.jpg"
-import img4 from "./resources/content/   4.jpg"
 import img5 from "./resources/content/   5.jpg"
 import img6 from "./resources/content/   6.jpg"
-import img7 from "./resources/content/   7.jpg"
 import img8 from "./resources/content/   8.jpg"
 import img9 from "./resources/content/   9.jpg"
-import img10 from "./resources/content/  10.jpg"
 import img11 from "./resources/content/  11.jpg"
 import img12 from "./resources/content/  12.jpg"
 

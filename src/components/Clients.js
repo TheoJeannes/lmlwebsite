@@ -10,12 +10,11 @@ import Gazel from '../resources/clients/gazel.webp';
 import Elyze from '../resources/clients/elyze.jpeg';
 import Ttshipping from '../resources/clients/tt.png';
 import styled from "styled-components";
-import Div from "./styledComponents";
+import Div, {handleDragStart} from "./styledComponents";
 import './fonts.css'
-import {handleDragStart} from "./styledComponents";
 // import Hgk from '../../resources/tt.png';
 
-const ColorDiv =styled(Div)`
+const ColorDiv = styled(Div)`
   background: #fdfdfd;
   box-shadow: 0 0 8px #000000;
   padding-top: 1% ;
@@ -32,7 +31,7 @@ const Item = styled.div`
   margin-bottom: 2%;
 `
 
-const CarouselItem = React.forwardRef(({src,alt},ref)=>(
+const CarouselItem = React.forwardRef(({src, alt}, ref) => (
     <Item ref={ref}>
         <Img src={src} onDragStart={handleDragStart} alt={alt}/>
     </Item>))
@@ -44,17 +43,23 @@ class Clients extends React.Component {
         const ref2 = React.createRef()
         const ref3 = React.createRef()
         const ref4 = React.createRef()
-        const plugin = [new Pagination({ type: 'scroll' }),new AutoPlay({duration:6000,animationDuration:1000,stopOnHover: true, delayAfterHover:100})]
+        const plugin = [new Pagination({type: 'scroll'}), new AutoPlay({
+            duration: 6000,
+            animationDuration: 1000,
+            stopOnHover: true,
+            delayAfterHover: 100
+        })]
         return (<ColorDiv id={"clients"}>
             <h2>Nos Clients</h2>
-            <Flicking plugins={plugin} circular={true} hideBeforeInit={true} align={"prev"} circularFallback={"bound"} renderOnlyVisible={true} >
+            <Flicking plugins={plugin} circular={true} hideBeforeInit={true} align={"prev"} circularFallback={"bound"}
+                      renderOnlyVisible={true}>
                 <CarouselItem ref={ref0} src={Agroenergie} alt={"AgroEnergie"}/>
                 <CarouselItem ref={ref1} src={Alteo} alt={"Alteo"}/>
                 <CarouselItem ref={ref2} src={Elyze} alt={"Elyze Energie"}/>
                 <CarouselItem ref={ref3} src={Gazel} alt={"Gazel Enery"}/>
                 <CarouselItem ref={ref4} src={Ttshipping} alt={"T&T Shipping"}/>
                 <ViewportSlot>
-                    <div className="flicking-pagination" ></div>
+                    <div className="flicking-pagination"></div>
                 </ViewportSlot>
                 {/*    https://hgkshipping.de/en/*/}
             </Flicking>
