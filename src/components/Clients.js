@@ -50,7 +50,7 @@ class Clients extends React.Component {
             delayAfterHover: 100
         })]
         return (<ColorDiv id={"clients"}>
-            <h2>Nos Clients</h2>
+            <h2>Our Clients</h2>
             <Flicking plugins={plugin} circular={true} hideBeforeInit={true} align={"prev"} circularFallback={"bound"}
                       renderOnlyVisible={true}>
                 <CarouselItem ref={ref0} src={Agroenergie} alt={"AgroEnergie"}/>

@@ -26,12 +26,12 @@ class Contacts extends React.Component {
 
     render() {
         return (<Div>
-            <h2>Nous Contacter :</h2>
+            <h2>To Reach Us :</h2>
             <List>
                 <Link href="mailto:ludovic.jeannes@lmlconsulting.fr">
                     Mail : ludovic.jeannes@lmlconsulting.fr</Link>
-                <Link href={"tel:++3601622457"}>Tél : +33 6 01 62 24 57</Link>
-                <Link>LinkedIn : </Link>
+                <Link href={"tel:++3601622457"}>Phone : +33 6 01 62 24 57</Link>
+                {/*<Link>LinkedIn : </Link>*/}
             </List>
         </Div>);
     }

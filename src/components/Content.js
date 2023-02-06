@@ -29,18 +29,20 @@ const StyledDiv = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 1em;
     display: grid;
+    margin: auto;
   }
 
   &.detailed {
-    height: 25vw;
+    //height: 25vw;
     text-align: justify;
-    //padding: 2%;
   }
-
+  
   width: 60%;
+  margin: auto;
   //justify-content: space-between;
   //align-items: center;
-  padding: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   //width: 40%;
 `;
 
@@ -55,10 +57,12 @@ const Body = styled.div`
 
 const QuarterDiv = styled.div`
   width: 100%;
-  height: 20vw;
+  max-height: 60vh;
   text-align: center;
-  padding: 5%;
-
+  //padding: 5%;
+  overflow: auto;
+  //margin: auto;
+  display: flex;
   &.top-left {
     background-color: #1f6df3;
   }
@@ -77,13 +81,16 @@ const QuarterDiv = styled.div`
 `
 
 const Text = styled.p`
+  
+  //border: yellow 3px solid;
+  
   align-self: center;
   display: flex;
   align-items: center;
   line-height: 1.5em;
   font-size: 1.5em;
   text-align: justify;
-  padding-inline: 10%;
+  padding-inline: 15%;
   overflow: auto;
 `
 
@@ -93,9 +100,9 @@ const Quarter = styled.div`
   text-overflow: ellipsis;
   padding: 2%;
   text-align: center;
-  justify-items: center;
-  height: 10vw;
-  width: 10vw;
+  justify-items: center;  
+  height: 25vh;
+  width: 25vh;
 
   &.top-left {
     background-color: #1f6df3;
@@ -173,8 +180,8 @@ const Quarter = styled.div`
   }
 
   &:hover {
-    height: 11vw;
-    width: 11vw;
+    height: 27vh;
+    width: 27vh;
   }
 `
 
@@ -187,7 +194,7 @@ const Item = styled.img`
 const Carousel = styled(Flicking)`
   width: 30%;
   margin: 2%;
-  max-height: 30vw;
+  max-height: 60vh;
 `
 
 const Esc = styled.div`
@@ -195,7 +202,7 @@ const Esc = styled.div`
   position: absolute;
   z-index: 3;
   top: 0;
-  right: 1%;
+  right: 5%;
 `
 const CarouselItem = React.forwardRef(({src, alt}, ref) => (
     <Item ref={ref} src={src} onDragStart={handleDragStart} alt={alt}/>))
@@ -269,18 +276,18 @@ function Content() {
         <PhotoCarousel focusState={focusState}/>
         {focusState === "" && <StyledDiv className={"pdca"}>
             <Quarter className="top-left" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {en_pdca_short["top-left"]}
+               <p> {en_pdca_short["top-left"]}</p>
             </Quarter>
             <Quarter className="top-right" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {en_pdca_short["top-right"]}
+             <p>   {en_pdca_short["top-right"]}</p>
             </Quarter>
             <Quarter className="bottom-left"
                      onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {en_pdca_short["bottom-left"]}
+               <p> {en_pdca_short["bottom-left"]}</p>
             </Quarter>
             <Quarter className="bottom-right"
                      onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {en_pdca_short["bottom-right"]}
+                <p>{en_pdca_short["bottom-right"]}</p>
             </Quarter>
         </StyledDiv>}
         {focusState !== "" && <StyledDiv className={"detailed"}>
