@@ -18,8 +18,8 @@ export const en_pdca_detailed = {
 }
 
 export const en_pdca_short = {
-    "top-left": "20 years of experience in multiple areas lead Ludovic JEANNES to create LML CONSULTING.",
-    "top-right": "LML CONSULTING support its customers through Transition Management mission, Specific Projet Management or Long Term Transformation.",
-    "bottom-left": "LEAN MANAGEMENT is our work base. Define, Measure, Analyze, Improve, Control",
-    "bottom-right": "Industry Project Supply Strategy Definition, Industry Transformation Project, Energy Industry Supply Support"
+    "top-left": "20 years of experience in multiple areas lead Ludovic JEANNES to create LML CONSULTING...",
+    "top-right": "LML CONSULTING support its customers through Transition Management mission, Specific Projet Management or Long Term Transformation...",
+    "bottom-left": "LEAN MANAGEMENT is our work base. Define, Measure, Analyze, Improve, Control...",
+    "bottom-right": "Industry Project Supply Strategy Definition, Industry Transformation Project, Energy Industry Supply Support..."
 }

@@ -81,9 +81,6 @@ const QuarterDiv = styled.div`
 `
 
 const Text = styled.p`
-  
-  //border: yellow 3px solid;
-  
   align-self: center;
   display: flex;
   align-items: center;
@@ -98,13 +95,25 @@ const Quarter = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 2%;
-  text-align: center;
+  padding: 5%;
   justify-items: center;  
   height: 25vh;
   width: 25vh;
-
+  cursor: pointer;
+  position: relative;
+  
+      p{
+      //position: absolute;
+      right: 5%;
+      left: 5%;
+      margin: auto;
+    }
+  
   &.top-left {
+    p{
+      bottom: 3%;
+      text-align: right;
+    }
     background-color: #1f6df3;
     border-radius: 100% 0 0 0;
     justify-self: end;
@@ -112,18 +121,31 @@ const Quarter = styled.div`
   }
 
   &.top-right {
+    p{
+      bottom: 3%;
+      text-align: left;
+    }
     background-color: red;
     align-self: end;
     border-radius: 0 100% 0 0;
   }
 
   &.bottom-left {
+    p{
+      top: 3%;
+      text-align: right;
+    }    
     background-color: #8550b1;
     border-radius: 0 0 0 100%;
     justify-self: end;
+    
   }
 
   &.bottom-right {
+    p{
+      top: 3%;
+      text-align: left;
+    }
     background-color: #0bf548;
     border-radius: 0 0 100% 0;
   }
@@ -276,7 +298,9 @@ function Content() {
         <PhotoCarousel focusState={focusState}/>
         {focusState === "" && <StyledDiv className={"pdca"}>
             <Quarter className="top-left" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-               <p> {en_pdca_short["top-left"]}</p>
+                <div>
+                    <p> {en_pdca_short["top-left"]}</p>
+                </div>
             </Quarter>
             <Quarter className="top-right" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
              <p>   {en_pdca_short["top-right"]}</p>

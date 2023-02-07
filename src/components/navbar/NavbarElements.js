@@ -11,8 +11,6 @@ export const Nav = styled.div`
   min-width: auto;
   box-shadow: 0 0 3px #000000;
   z-index: 3;
-  /* Third Nav */
-  /* justify-content: flex-start; */
 `;
 
 export const NavMenu = styled.div`
