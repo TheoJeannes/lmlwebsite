@@ -100,17 +100,13 @@ const Quarter = styled.div`
   height: 25vh;
   width: 25vh;
   cursor: pointer;
+  position: relative;
 
-  //p {
-  //  //white-space: nowrap;
-  //  overflow: hidden;
-  //  text-overflow: ellipsis;
-  //  //position: absolute;
-  //  right: 5%;
-  //  left: 5%;
-  //  margin: 0;
-  //}
-
+  p{
+    bottom: 0;
+    position: absolute;
+  }
+  
   &:hover {
     height: 27vh;
     width: 27vh;
@@ -118,13 +114,7 @@ const Quarter = styled.div`
   }
 
   &.top-left {
-    p {
-      bottom: 3%;
-      text-align: right;
-    }
-
     text-align: right;
-    vert-align: bottom;
     background-color: #1f6df3;
     border-radius: 100% 0 0 0;
     justify-self: end;
@@ -132,23 +122,13 @@ const Quarter = styled.div`
   }
 
   &.top-right {
-    p {
-      bottom: 3%;
-      text-align: left;
-    }
-
-    text-align: left;
     background-color: red;
     align-self: end;
     border-radius: 0 100% 0 0;
   }
 
   &.bottom-left {
-    p {
-      top: 3%;
-      text-align: right;
-    }
-
+    text-align: right;
     background-color: #8550b1;
     border-radius: 0 0 0 100%;
     justify-self: end;
@@ -156,11 +136,6 @@ const Quarter = styled.div`
   }
 
   &.bottom-right {
-    p {
-      top: 3%;
-      text-align: left;
-    }
-
     background-color: #0bf548;
     border-radius: 0 0 100% 0;
   }
@@ -312,7 +287,7 @@ function Content() {
                 {en_pdca_short["top-left"]}
             </Quarter>
             <Quarter className="top-right" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {en_pdca_short["top-right"]}
+               {en_pdca_short["top-right"]}
             </Quarter>
             <Quarter className="bottom-left"
                      onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>

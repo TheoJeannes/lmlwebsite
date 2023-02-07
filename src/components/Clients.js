@@ -17,40 +17,43 @@ import './fonts.css'
 const ColorDiv = styled(Div)`
   background: #fdfdfd;
   box-shadow: 0 0 8px #000000;
-  padding-top: 1% ;
+  padding-top: 0;
+  padding-bottom: 0;
 `
 
 const Img = styled.img`
-  height: 200px;
+  height: 9vh;
 `
 const Item = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 33%;
+  width: 33%;
   margin-bottom: 2%;
 `
 
-const CarouselItem = React.forwardRef(({src, alt}, ref) => (
-    <Item ref={ref}>
-        <Img src={src} onDragStart={handleDragStart} alt={alt}/>
-    </Item>))
+const Title = styled.h2`
+  margin-top: .4em;
+  margin-bottom: 0;
+`
+
+const CarouselItem = React.forwardRef(({src, alt}, ref) => (<Item ref={ref}>
+    <Img src={src} onDragStart={handleDragStart} alt={alt}/>
+</Item>))
 
 class Clients extends React.Component {
     render() {
+        //TODO table for references
         const ref0 = React.createRef()
         const ref1 = React.createRef()
         const ref2 = React.createRef()
         const ref3 = React.createRef()
         const ref4 = React.createRef()
         const plugin = [new Pagination({type: 'scroll'}), new AutoPlay({
-            duration: 6000,
-            animationDuration: 1000,
-            stopOnHover: true,
-            delayAfterHover: 100
+            duration: 6000, animationDuration: 1000, stopOnHover: true, delayAfterHover: 100
         })]
         return (<ColorDiv id={"clients"}>
-            <h2>Our Clients</h2>
+            <Title>Our Clients</Title>
             <Flicking plugins={plugin} circular={true} hideBeforeInit={true} align={"prev"} circularFallback={"bound"}
                       renderOnlyVisible={true}>
                 <CarouselItem ref={ref0} src={Agroenergie} alt={"AgroEnergie"}/>
