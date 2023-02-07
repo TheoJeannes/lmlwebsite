@@ -36,7 +36,7 @@ const StyledDiv = styled.div`
     //height: 25vw;
     text-align: justify;
   }
-  
+
   width: 60%;
   margin: auto;
   //justify-content: space-between;
@@ -63,6 +63,7 @@ const QuarterDiv = styled.div`
   overflow: auto;
   //margin: auto;
   display: flex;
+
   &.top-left {
     background-color: #1f6df3;
   }
@@ -96,24 +97,34 @@ const Quarter = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 5%;
-  justify-items: center;  
   height: 25vh;
   width: 25vh;
   cursor: pointer;
-  position: relative;
-  
-      p{
-      //position: absolute;
-      right: 5%;
-      left: 5%;
-      margin: auto;
-    }
-  
+
+  //p {
+  //  //white-space: nowrap;
+  //  overflow: hidden;
+  //  text-overflow: ellipsis;
+  //  //position: absolute;
+  //  right: 5%;
+  //  left: 5%;
+  //  margin: 0;
+  //}
+
+  &:hover {
+    height: 27vh;
+    width: 27vh;
+    margin: -1vh -1vh;
+  }
+
   &.top-left {
-    p{
+    p {
       bottom: 3%;
       text-align: right;
     }
+
+    text-align: right;
+    vert-align: bottom;
     background-color: #1f6df3;
     border-radius: 100% 0 0 0;
     justify-self: end;
@@ -121,31 +132,35 @@ const Quarter = styled.div`
   }
 
   &.top-right {
-    p{
+    p {
       bottom: 3%;
       text-align: left;
     }
+
+    text-align: left;
     background-color: red;
     align-self: end;
     border-radius: 0 100% 0 0;
   }
 
   &.bottom-left {
-    p{
+    p {
       top: 3%;
       text-align: right;
-    }    
+    }
+
     background-color: #8550b1;
     border-radius: 0 0 0 100%;
     justify-self: end;
-    
+
   }
 
   &.bottom-right {
-    p{
+    p {
       top: 3%;
       text-align: left;
     }
+
     background-color: #0bf548;
     border-radius: 0 0 100% 0;
   }
@@ -201,10 +216,6 @@ const Quarter = styled.div`
     shape-margin: 1%;
   }
 
-  &:hover {
-    height: 27vh;
-    width: 27vh;
-  }
 `
 
 const Item = styled.img`
@@ -298,20 +309,18 @@ function Content() {
         <PhotoCarousel focusState={focusState}/>
         {focusState === "" && <StyledDiv className={"pdca"}>
             <Quarter className="top-left" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                <div>
-                    <p> {en_pdca_short["top-left"]}</p>
-                </div>
+                {en_pdca_short["top-left"]}
             </Quarter>
             <Quarter className="top-right" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-             <p>   {en_pdca_short["top-right"]}</p>
+                {en_pdca_short["top-right"]}
             </Quarter>
             <Quarter className="bottom-left"
                      onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-               <p> {en_pdca_short["bottom-left"]}</p>
+                {en_pdca_short["bottom-left"]}
             </Quarter>
             <Quarter className="bottom-right"
                      onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                <p>{en_pdca_short["bottom-right"]}</p>
+                {en_pdca_short["bottom-right"]}
             </Quarter>
         </StyledDiv>}
         {focusState !== "" && <StyledDiv className={"detailed"}>
