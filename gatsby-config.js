@@ -11,7 +11,6 @@ module.exports = {
         resolve: 'gatsby-plugin-manifest', options: {icon: 'src/resources/icon.svg'}},{
         resolve: `gatsby-plugin-sitemap`,
         options: {
-            useFallback: true,
             query: `
         {
           site {

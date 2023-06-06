@@ -15,6 +15,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@egjs/flicking-plugins": "^4.7.0",
+    "@egjs/react-flicking": "^4.10.9",
     "gatsby": "^5.10.0",
     "gatsby-plugin-git-lastmod": "^0.1.2",
     "gatsby-plugin-manifest": "^5.10.0",
