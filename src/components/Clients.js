@@ -12,7 +12,7 @@ import Ttshipping from '../resources/clients/tt.png';
 import styled from "styled-components";
 import Div, {handleDragStart} from "./styledComponents";
 import './fonts.css'
-// import Hgk from '../../resources/tt.png';
+import {getTexts} from "./helpers";
 
 const ColorDiv = styled(Div)`
   background: #fdfdfd;
@@ -53,7 +53,7 @@ class Clients extends React.Component {
             duration: 6000, animationDuration: 1000, stopOnHover: true, delayAfterHover: 100
         })]
         return (<ColorDiv id={"clients"}>
-            <Title>Our Clients</Title>
+            <Title>{getTexts("Clients",this.props.langCode)["title"]}</Title>
             <Flicking plugins={plugin} circular={true} hideBeforeInit={true} align={"prev"} circularFallback={"bound"}
                       renderOnlyVisible={true}>
                 <CarouselItem ref={ref0} src={Agroenergie} alt={"AgroEnergie"}/>

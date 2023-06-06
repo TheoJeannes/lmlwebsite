@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Div from "./styledComponents";
-
+import {getTexts} from "./helpers";
 
 const List = styled.div`
   display: flex;
@@ -15,22 +15,26 @@ const Link = styled.a`
   color: black;
   text-decoration: none;
   font-size: 1.5em;
-  
-  &:hover{
-    font-size: 160%;
+  width: 25vw;
+`
+
+const It = styled.span`
+  &:hover {
     color: #333333;
+    font-style: italic;
   }
 `
 
-class Contacts extends React.Component {
+class Contact extends React.Component {
 
     render() {
+        let texts = getTexts("Contact",this.props.langCode);
         return (<Div>
-            <h2>To Reach Us :</h2>
+            <h2>{texts["title"]} :</h2>
             <List>
                 <Link href="mailto:ludovic.jeannes@lmlconsulting.fr">
-                    Mail : ludovic.jeannes@lmlconsulting.fr</Link>
-                <Link href={"tel:++3601622457"}>Phone : +33 6 01 62 24 57</Link>
+                    {texts["mail"]} : <It>ludovic.jeannes@lmlconsulting.fr</It></Link>
+                <Link href={"tel:++3601622457"}>{texts["phone"]} : <It>+33 6 01 62 24 57</It></Link>
                 {/*<Link>LinkedIn : </Link>*/}
             </List>
         </Div>);

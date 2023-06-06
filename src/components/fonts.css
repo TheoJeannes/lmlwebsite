@@ -10,3 +10,7 @@
 .flicking-pagination-bullet-active {
     background-color: #28313e;
 }
+
+body {
+    margin: 0;
+}

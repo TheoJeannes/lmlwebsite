@@ -1,27 +1,32 @@
-import React, {createRef, useEffect, useRef, useState} from "react";
+import React, {createRef, useEffect, useState} from "react";
 import styled from "styled-components";
 import {handleDragStart} from "./styledComponents";
-import Flicking, {ViewportSlot} from "@egjs/react-flicking";
-import {Arrow, AutoPlay} from "@egjs/flicking-plugins";
-import {en_pdca_detailed, en_pdca_short, imgList} from "../assests";
+import Flicking from "@egjs/react-flicking";
+import {imgList} from "../resources/assets";
+import {getTexts} from "./helpers";
+import {AutoPlay} from "@egjs/flicking-plugins";
+import arrow from "../resources/icons/arrow.png";
 
-const ESCAPE_KEYS = ["27", "Escape"];
+const ArrowImg = styled.img`
+  height: 100%;
+  //width: 80%;
+`
 
-const useEventListener = (eventName, handler, element = window) => {
-    const savedHandler = useRef();
-
-    useEffect(() => {
-        savedHandler.current = handler;
-    }, [handler]);
-
-    useEffect(() => {
-        const eventListener = (event) => savedHandler.current(event);
-        element.addEventListener(eventName, eventListener);
-        return () => {
-            element.removeEventListener(eventName, eventListener);
-        };
-    }, [eventName, element]);
-};
+const Arrow = styled.div`
+  position: absolute;
+  height: 8vh;
+  top: 40%;
+  &.previous {
+    left: 5%;
+    rotate: -35deg;
+  }
+  
+  &.next {
+    right: 5%;
+    rotate: 35deg;
+    transform: scaleX(-1);
+  }
+`
 
 const StyledDiv = styled.div`
 
@@ -35,9 +40,10 @@ const StyledDiv = styled.div`
   &.detailed {
     //height: 25vw;
     text-align: justify;
+    position: relative;
   }
 
-  width: 60%;
+  width: 50%;
   margin: auto;
   //justify-content: space-between;
   //align-items: center;
@@ -56,13 +62,11 @@ const Body = styled.div`
 `
 
 const QuarterDiv = styled.div`
-  width: 100%;
-  max-height: 60vh;
-  text-align: center;
-  //padding: 5%;
+  height: 42vh;
   overflow: auto;
-  //margin: auto;
   display: flex;
+  user-select: text;
+  padding: 5% 15% 5% 15%;
 
   &.top-left {
     background-color: #1f6df3;
@@ -82,14 +86,9 @@ const QuarterDiv = styled.div`
 `
 
 const Text = styled.p`
-  align-self: center;
-  display: flex;
-  align-items: center;
   line-height: 1.5em;
   font-size: 1.5em;
-  text-align: justify;
-  padding-inline: 15%;
-  overflow: auto;
+  margin: auto;
 `
 
 const Quarter = styled.div`
@@ -102,11 +101,11 @@ const Quarter = styled.div`
   cursor: pointer;
   position: relative;
 
-  p{
+  p {
     bottom: 0;
     position: absolute;
   }
-  
+
   &:hover {
     height: 27vh;
     width: 27vh;
@@ -208,10 +207,12 @@ const Carousel = styled(Flicking)`
 const Esc = styled.div`
   font-size: 2em;
   position: absolute;
-  z-index: 3;
-  top: 0;
+  z-index: 2;
+  top: 10%;
   right: 5%;
+  cursor: pointer;
 `
+
 const CarouselItem = React.forwardRef(({src, alt}, ref) => (
     <Item ref={ref} src={src} onDragStart={handleDragStart} alt={alt}/>))
 
@@ -223,99 +224,78 @@ function shuffleArray(arr) {
 }
 
 function PhotoCarousel(focusState) {
-    let plugins = [new AutoPlay({duration: 3000, animationDuration: 6000, stopOnHover: false})];
-    // if(focusState===""){
-    //
-    // }else if (focusState==="top-left"){
-    //
-    // }else if (focusState==="top-right"){
-    //
-    // }else if (focusState==="bottom-right"){
-    //
-    // }else{
-    //
-    // }
+    let plugins = [new AutoPlay({duration: 1500, animationDuration: 3000, stopOnHover: false})];
     let imgListLocal = imgList
     shuffleArray(imgListLocal)
+    let i = 0
     return (<Carousel align={"prev"} hideBeforeInit={true} circular={true} circularFallback={"bound"} horizontal={false}
                       plugins={plugins}>
-        {imgListLocal.map(idx => <CarouselItem ref={createRef} src={idx} alt={""}/>)}
+        {imgListLocal.map(idx => <CarouselItem key={i++} ref={createRef} src={idx} alt={""}/>)}
     </Carousel>)
 }
 
-function Content() {
+const Content = (props) => {
     const [focusState, setFocus] = useState("");
+    let lang = getTexts("Content", props.langCode)
 
-    const handler = ({key}) => {
-        if (ESCAPE_KEYS.includes(String(key))) {
-            setFocus("")
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            if (event.key === 'Escape') {
+                setFocus("");
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyPress);
+
+        // Clean up the event listener
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
+
+    function shiftFocus(number) {
+        let focusList = ["top-left", "top-right", "bottom-left", "bottom-right"]
+        let idx = focusList.indexOf(focusState)
+        if (idx === 0 && number === -1) {
+            idx = 4 //4 + -1 will return the fourth element
+        } else if (idx === 3 && number === 1) {
+            idx = -1 //-1 + 1 will return the first element
         }
-    };
-    useEventListener("keydown", handler);
-
-    function pickIndex(focusState) {
-        switch (focusState) {
-            case "top-left":
-                return 0;
-            case "top-right":
-                return 1;
-            case "bottom-left":
-                return 2;
-            default:
-                return 3;
-
-        }
-    }
-
-    function findState(index) {
-        switch (index) {
-            case 0:
-                return "top-left";
-            case 1:
-                return "top-right";
-            case 2:
-                return "bottom-left";
-            default:
-                return "bottom-right";
-        }
+        setFocus(focusList[idx + number])
     }
 
     return (<Body id={"activities"}>
         <PhotoCarousel focusState={focusState}/>
         {focusState === "" && <StyledDiv className={"pdca"}>
-            <Quarter className="top-left" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {en_pdca_short["top-left"]}
+            <Quarter className="top-left" onClick={() => setFocus("top-left")}>
+                {lang["short"]["top-left"]}
             </Quarter>
-            <Quarter className="top-right" onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-               {en_pdca_short["top-right"]}
+            <Quarter className="top-right" onClick={() => setFocus("top-right")}>
+                {lang["short"]["top-right"]}
             </Quarter>
             <Quarter className="bottom-left"
-                     onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {en_pdca_short["bottom-left"]}
+                     onClick={() => setFocus("bottom-left")}>
+                {lang["short"]["bottom-left"]}
             </Quarter>
             <Quarter className="bottom-right"
-                     onClick={(e) => setFocus(e.target.classList[e.target.classList.length - 1])}>
-                {en_pdca_short["bottom-right"]}
+                     onClick={() => setFocus("bottom-right")}>
+                {lang["short"]["bottom-right"]}
             </Quarter>
         </StyledDiv>}
         {focusState !== "" && <StyledDiv className={"detailed"}>
-
-            <Flicking hideBeforeInit={true} circular={true}
-                      defaultIndex={pickIndex(focusState)}
-                      plugins={[new Arrow()]}
-                      onChanged={(e) => {
-                          setFocus(findState(e.index))
-                      }}>
-                <QuarterDiv className={"top-left"}><Text>{en_pdca_detailed["top-left"]}</Text></QuarterDiv>
-                <QuarterDiv className={"top-right"}><Text>{en_pdca_detailed["top-right"]}</Text></QuarterDiv>
-                <QuarterDiv className={"bottom-left"}><Text>{en_pdca_detailed["bottom-left"]}</Text></QuarterDiv>
-                <QuarterDiv className={"bottom-right"}><Text>{en_pdca_detailed["bottom-right"]}</Text></QuarterDiv>
-                <ViewportSlot>
-                    <span className="flicking-arrow-prev"></span>
-                    <span className="flicking-arrow-next"></span>
-                    <Esc onClick={() => setFocus("")}>    &#x1F5F4; </Esc>
-                </ViewportSlot>
-            </Flicking></StyledDiv>}
+            <Arrow className={"previous"} onClick={() => shiftFocus(-1)}><ArrowImg  src={arrow}
+                                                            alt={"previous"}/></Arrow>
+            {focusState === "top-left" &&
+                <QuarterDiv className={"top-left"}><Text>{lang["detailed"]["top-left"]}</Text></QuarterDiv>}
+            {focusState === "top-right" &&
+                <QuarterDiv className={"top-right"}><Text>{lang["detailed"]["top-right"]}</Text></QuarterDiv>}
+            {focusState === "bottom-left" &&
+                <QuarterDiv className={"bottom-left"}><Text>{lang["detailed"]["bottom-left"]}</Text></QuarterDiv>}
+            {focusState === "bottom-right" &&
+                <QuarterDiv className={"bottom-right"}><Text>{lang["detailed"]["bottom-right"]}</Text></QuarterDiv>}
+            <Arrow className={"next"} onClick={() => shiftFocus(1)}><ArrowImg  src={arrow} alt={"next"}/></Arrow>
+            <Esc onClick={() => setFocus("")}>&times;</Esc>
+        </StyledDiv>}
         <PhotoCarousel a={focusState}/>
     </Body>);
 }
