@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {handleDragStart} from "./styledComponents";
 import Flicking from "@egjs/react-flicking";
 import {imgList} from "../resources/assets";
-import {getTexts} from "./helpers";
+import {getDisplayType, getTexts} from "./helpers";
 import {AutoPlay} from "@egjs/flicking-plugins";
 import arrow from "../resources/icons/arrow.png";
 
@@ -16,11 +16,12 @@ const Arrow = styled.div`
   position: absolute;
   height: 8vh;
   top: 40%;
+
   &.previous {
     left: 5%;
     rotate: -35deg;
   }
-  
+
   &.next {
     right: 5%;
     rotate: 35deg;
@@ -34,22 +35,27 @@ const StyledDiv = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 1em;
     display: grid;
-    margin: auto;
   }
 
   &.detailed {
-    //height: 25vw;
     text-align: justify;
     position: relative;
   }
 
   width: 50%;
   margin: auto;
-  //justify-content: space-between;
-  //align-items: center;
   padding-top: 2%;
   padding-bottom: 2%;
-  //width: 40%;
+
+  ///*Tel Portrait*/
+  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+  //  width: 100%;
+  //}
+  //
+  // /*Tablette*/
+  // @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
+  //   width: 100%;
+  // }
 `;
 
 const Body = styled.div`
@@ -57,8 +63,25 @@ const Body = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  //padding-bottom: 3%;
   max-height: 80%;
+
+  ///*Tel Paysage*/
+  //@media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape) {
+  //  justify-content: center;
+  //  display: block;
+  //}
+  //
+  ///*Tel Portrait*/
+  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+  //  justify-content: center;
+  //  flex-grow: 1;
+  //  display: block; 
+  //}
+  //
+  ///*Tablette*/
+  //@media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait) {
+  //  justify-content: center;
+  //}
 `
 
 const QuarterDiv = styled.div`
@@ -190,11 +213,17 @@ const Quarter = styled.div`
     shape-margin: 1%;
   }
 
+  ///*Tel Portrait*/
+  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+  //  width: 45vw;
+  //  height: 45vw;
+  //}
+
 `
 
 const Item = styled.img`
-  height: fit-content;
-  //width: fit-content;
+  //height: 15vh;
+  //width: 30vw;
   padding-inline: 5%;
 `
 
@@ -202,6 +231,23 @@ const Carousel = styled(Flicking)`
   width: 30%;
   margin: 2%;
   max-height: 60vh;
+  ///*Tel Paysage*/
+  //@media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape) {
+  //  width: 0;
+  //  margin: 0;
+  //}
+  //
+  ///*Tel Portrait*/
+  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+  //  width: 0;
+  //  margin: 0;
+  //}
+  //
+  ///*Tablette*/
+  //@media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait) {
+  //  width: 0;
+  //  margin: 0;
+  //}
 `
 
 const Esc = styled.div`
@@ -283,8 +329,7 @@ const Content = (props) => {
             </Quarter>
         </StyledDiv>}
         {focusState !== "" && <StyledDiv className={"detailed"}>
-            <Arrow className={"previous"} onClick={() => shiftFocus(-1)}><ArrowImg  src={arrow}
-                                                            alt={"previous"}/></Arrow>
+            <Arrow className={"previous"} onClick={() => shiftFocus(-1)}><ArrowImg src={arrow} alt={"previous"}/></Arrow>
             {focusState === "top-left" &&
                 <QuarterDiv className={"top-left"}><Text>{lang["detailed"]["top-left"]}</Text></QuarterDiv>}
             {focusState === "top-right" &&
@@ -293,10 +338,10 @@ const Content = (props) => {
                 <QuarterDiv className={"bottom-left"}><Text>{lang["detailed"]["bottom-left"]}</Text></QuarterDiv>}
             {focusState === "bottom-right" &&
                 <QuarterDiv className={"bottom-right"}><Text>{lang["detailed"]["bottom-right"]}</Text></QuarterDiv>}
-            <Arrow className={"next"} onClick={() => shiftFocus(1)}><ArrowImg  src={arrow} alt={"next"}/></Arrow>
+            <Arrow className={"next"} onClick={() => shiftFocus(1)}><ArrowImg src={arrow} alt={"next"}/></Arrow>
             <Esc onClick={() => setFocus("")}>&times;</Esc>
         </StyledDiv>}
-        <PhotoCarousel a={focusState}/>
+        <PhotoCarousel focusState={focusState}/>
     </Body>);
 }
 

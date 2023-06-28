@@ -16,7 +16,6 @@ const Box = styled.div`
 `
 
 class Footer extends React.Component {
-
     render() {
         return <Box id={'about'}>
             {getTexts("Footer",this.props.langCode)["legal"]}

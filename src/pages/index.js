@@ -4,6 +4,7 @@ import Content from "../components/Content";
 import Navbar from "../components/Navbar";
 import Contact from "../components/Contact";
 import Clients from "../components/Clients";
+import "../resources/global.css";
 
 const IndexPage = () => {
     return (<main>

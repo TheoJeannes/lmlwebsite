@@ -43,7 +43,6 @@ const CarouselItem = React.forwardRef(({src, alt}, ref) => (<Item ref={ref}>
 
 class Clients extends React.Component {
     render() {
-        //TODO table for references
         const ref0 = React.createRef()
         const ref1 = React.createRef()
         const ref2 = React.createRef()

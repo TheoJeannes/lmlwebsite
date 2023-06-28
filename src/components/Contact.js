@@ -8,6 +8,17 @@ const List = styled.div`
   justify-content: space-evenly;
   width: 100%;
   flex-grow: 1;
+
+  ///*Tel Portrait*/
+  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+  //  flex-direction: column;
+  //  font-size: .8em;
+  //}
+  //
+  ///*Tablette*/
+  //@media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
+  //  flex-direction: column;
+  //}
 `
 
 const Link = styled.a`
@@ -16,6 +27,20 @@ const Link = styled.a`
   text-decoration: none;
   font-size: 1.5em;
   width: 25vw;
+
+  ///*Tel Portrait*/
+  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+  //  width: 100%;
+  //  margin-bottom: 3%;
+  //}
+  //
+  //
+  // /*Tablette*/
+  // @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
+  //   width: 100%;
+  //   margin-bottom: 3%;
+  // }
+  
 `
 
 const It = styled.span`
@@ -35,7 +60,7 @@ class Contact extends React.Component {
                 <Link href="mailto:ludovic.jeannes@lmlconsulting.fr">
                     {texts["mail"]} : <It>ludovic.jeannes@lmlconsulting.fr</It></Link>
                 <Link href={"tel:++3601622457"}>{texts["phone"]} : <It>+33 6 01 62 24 57</It></Link>
-                {/*<Link>LinkedIn : </Link>*/}
+                <Link href={"https://www.linkedin.com/company/lml-consulting-sas"}>LinkedIn : <It>LML CONSULTING SAS</It></Link>
             </List>
         </Div>);
     }
