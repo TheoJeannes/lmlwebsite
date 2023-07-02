@@ -74,6 +74,10 @@ const StyledDiv = styled.div`
    @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
      width: 90%;
    }
+  @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
+    width: 90%;
+  }
+  
 `;
 
 const Body = styled.div`
@@ -225,6 +229,16 @@ const Quarter = styled.div`
     }
   }
   @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
+    padding: 3%;
+    width: 30vw;
+    height: 30vw;
+    &:hover {
+      width: 32vw;
+      height: 32vw;
+      padding: 1%;
+    }
+  }
+  @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
     padding: 3%;
     width: 30vw;
     height: 30vw;

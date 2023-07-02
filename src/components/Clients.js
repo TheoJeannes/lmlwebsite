@@ -26,6 +26,9 @@ const Img = styled.img`
   @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
     height: 10vw;
   }
+  @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
+    height: 8vw;
+  }
 `
 const Item = styled.div`
   display: flex;
@@ -43,6 +46,9 @@ const Item = styled.div`
     width: 50%;
   }
   @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
+    width: 50%;
+  }
+  @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
     width: 50%;
   }
   

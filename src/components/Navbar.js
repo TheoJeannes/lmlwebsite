@@ -27,6 +27,9 @@ const Nav = styled.div`
   min-width: auto;
   box-shadow: 0 0 3px #000000;
   z-index: 3;
+  @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
+    height: 10vh;
+  }
 `;
 
 const Lang = styled.div`
@@ -39,6 +42,10 @@ const Lang = styled.div`
   @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
     height: 6vh;
     width: 15vh;
+  }
+  @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
+    height: 8vh;
+    width: 20vh;
   }
 `
 const LangImg = styled.img`

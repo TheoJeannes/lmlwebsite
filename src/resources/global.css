@@ -36,3 +36,8 @@ main {
         font-size: 90%;
     }
 }
+@media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
+    main {
+        font-size: 90%;
+    }
+}
