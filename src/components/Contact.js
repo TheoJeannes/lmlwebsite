@@ -8,17 +8,21 @@ const List = styled.div`
   justify-content: space-evenly;
   width: 100%;
   flex-grow: 1;
-
-  ///*Tel Portrait*/
-  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
-  //  flex-direction: column;
-  //  font-size: .8em;
-  //}
-  //
-  ///*Tablette*/
-  //@media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
-  //  flex-direction: column;
-  //}
+  
+  /*Tel Paysage*/
+  @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
+    flex-direction: column;
+  }
+  /*Tel Portrait*/
+  @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+    flex-direction: column;
+    font-size: .8em;
+  }
+  /*Tablette*/
+  @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
+    flex-direction: column;
+  }
+  
 `
 
 const Link = styled.a`
@@ -27,19 +31,23 @@ const Link = styled.a`
   text-decoration: none;
   font-size: 1.5em;
   width: 25vw;
-
-  ///*Tel Portrait*/
-  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
-  //  width: 100%;
-  //  margin-bottom: 3%;
-  //}
-  //
-  //
-  // /*Tablette*/
-  // @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
-  //   width: 100%;
-  //   margin-bottom: 3%;
-  // }
+  border: #8550b1 solid 1px;
+  /*Tel Paysage*/
+  @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
+    
+    width: 95%;
+    margin-bottom: 3%;
+  }
+  /*Tel Portrait*/
+  @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+    width: 95%;
+    margin-bottom: 3%;
+  }
+  /*Tablette*/
+  @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
+    width: 95%;
+    margin-bottom: 3%;
+  }
   
 `
 

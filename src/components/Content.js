@@ -27,6 +27,11 @@ const Arrow = styled.div`
     rotate: 35deg;
     transform: scaleX(-1);
   }
+
+  /*Tel Portrait*/
+  @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+    height: 8vw;
+  }
 `
 
 const StyledDiv = styled.div`
@@ -40,6 +45,10 @@ const StyledDiv = styled.div`
   &.detailed {
     text-align: justify;
     position: relative;
+    /*Tel Portrait*/
+    @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+      font-size: 90%;
+    }
   }
 
   width: 50%;
@@ -47,41 +56,23 @@ const StyledDiv = styled.div`
   padding-top: 2%;
   padding-bottom: 2%;
 
-  ///*Tel Portrait*/
-  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
-  //  width: 100%;
-  //}
-  //
-  // /*Tablette*/
-  // @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
-  //   width: 100%;
-  // }
+  /*Tel Portrait*/
+  @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+    width: 90%;
+  }
+
+   /*Tablette*/
+   @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
+     width: 90%;
+   }
 `;
 
 const Body = styled.div`
-  padding-top: 85px;
+  padding-top: 9vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   max-height: 80%;
-
-  ///*Tel Paysage*/
-  //@media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape) {
-  //  justify-content: center;
-  //  display: block;
-  //}
-  //
-  ///*Tel Portrait*/
-  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
-  //  justify-content: center;
-  //  flex-grow: 1;
-  //  display: block; 
-  //}
-  //
-  ///*Tablette*/
-  //@media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait) {
-  //  justify-content: center;
-  //}
 `
 
 const QuarterDiv = styled.div`
@@ -213,11 +204,12 @@ const Quarter = styled.div`
     shape-margin: 1%;
   }
 
-  ///*Tel Portrait*/
-  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
-  //  width: 45vw;
-  //  height: 45vw;
-  //}
+  /*Tel Portrait*/
+  @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+    width: 45vw;
+    height: 45vw;
+    padding: 3%;
+  }
 
 `
 
@@ -231,23 +223,23 @@ const Carousel = styled(Flicking)`
   width: 30%;
   margin: 2%;
   max-height: 60vh;
-  ///*Tel Paysage*/
-  //@media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape) {
-  //  width: 0;
-  //  margin: 0;
-  //}
-  //
-  ///*Tel Portrait*/
-  //@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
-  //  width: 0;
-  //  margin: 0;
-  //}
-  //
-  ///*Tablette*/
-  //@media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait) {
-  //  width: 0;
-  //  margin: 0;
-  //}
+  /*Tel Paysage*/
+  @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape) {
+    width: 0;
+    margin: 0;
+  }
+
+  /*Tel Portrait*/
+  @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+    width: 0;
+    margin: 0;
+  }
+
+  /*Tablette*/
+  @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait) {
+    width: 0;
+    margin: 0;
+  }
 `
 
 const Esc = styled.div`
@@ -284,6 +276,12 @@ const Content = (props) => {
     const [focusState, setFocus] = useState("");
     let lang = getTexts("Content", props.langCode)
 
+    function handleSwipe(e) {
+        console.log(e);
+        e.detail.direction === 2 ? shiftFocus(1) : shiftFocus(-1);
+        console.log("abc")
+    }
+
     useEffect(() => {
         const handleKeyPress = (event) => {
             if (event.key === 'Escape') {
@@ -292,6 +290,7 @@ const Content = (props) => {
         };
 
         document.addEventListener('keydown', handleKeyPress);
+        document.addEventListener('ontouchmove', (e) => handleSwipe(e));
 
         // Clean up the event listener
         return () => {

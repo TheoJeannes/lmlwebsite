@@ -30,6 +30,13 @@ const Item = styled.div`
   align-items: center;
   width: 33%;
   margin-bottom: 2%;
+  
+  /*Tel Portrait*/
+  @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait){
+    width: 98%;
+    border: #8550b1 1px solid;
+  }
+  
 `
 
 const Title = styled.h2`
@@ -64,7 +71,6 @@ class Clients extends React.Component {
                 <ViewportSlot>
                     <div className="flicking-pagination"></div>
                 </ViewportSlot>
-                {/*    https://hgkshipping.de/en/*/}
             </Flicking>
         </ColorDiv>);
     }

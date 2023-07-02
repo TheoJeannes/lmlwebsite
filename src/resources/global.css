@@ -13,10 +13,12 @@ code {
 }
 
 main {
-    /*border: solid red 1px;*/
     min-height: 100vh;
 }
 
-*{
-    /*border: 1px red solid;*/
+/*Tel Portrait*/
+@media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+    main {
+        font-size: 90%;
+    }
 }
