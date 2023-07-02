@@ -65,14 +65,14 @@ const StyledDiv = styled.div`
 
   /*Tel Portrait*/
   @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
-    width: 90%;
+    width: 95%;
   }
   @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
     width: 90%;
   }
    /*Tablette*/
    @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
-     width: 90%;
+     width: 95%;
    }
   @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
     width: 90%;
