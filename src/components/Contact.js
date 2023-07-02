@@ -50,11 +50,15 @@ const It = styled.span`
   }
 `
 
+const DivNoPadding = styled(Div)`
+ padding-top: 0;
+`
+
 class Contact extends React.Component {
 
     render() {
         let texts = getTexts("Contact",this.props.langCode);
-        return (<Div>
+        return (<DivNoPadding>
             <h2>{texts["title"]} :</h2>
             <List>
                 <Link href="mailto:ludovic.jeannes@lmlconsulting.fr">
@@ -62,7 +66,7 @@ class Contact extends React.Component {
                 <Link href={"tel:++3601622457"}>{texts["phone"]} : <It>+33 6 01 62 24 57</It></Link>
                 <Link href={"https://www.linkedin.com/company/lml-consulting-sas"}>LinkedIn : <It>LML CONSULTING SAS</It></Link>
             </List>
-        </Div>);
+        </DivNoPadding>);
     }
 }
 

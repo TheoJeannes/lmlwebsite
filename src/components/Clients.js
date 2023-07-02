@@ -17,8 +17,8 @@ import {getTexts} from "./helpers";
 const ColorDiv = styled(Div)`
   background: #fdfdfd;
   box-shadow: 0 0 8px #000000;
-  padding-top: 0;
   padding-bottom: 0;
+  padding-top: 0;
 `
 
 const Img = styled.img`
@@ -34,6 +34,7 @@ const Item = styled.div`
 
 const Title = styled.h2`
   margin-top: .4em;
+  padding-top: .6em;
   margin-bottom: 0;
 `
 

@@ -13,6 +13,7 @@ const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 3vh;
 `
 
 class Footer extends React.Component {
