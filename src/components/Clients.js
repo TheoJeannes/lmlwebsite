@@ -34,7 +34,10 @@ const Item = styled.div`
   /*Tel Portrait*/
   @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait){
     width: 98%;
-    border: #8550b1 1px solid;
+  }
+  /*Tablette*/
+  @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
+    width: 50%;
   }
   
 `

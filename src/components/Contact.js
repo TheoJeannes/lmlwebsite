@@ -31,7 +31,7 @@ const Link = styled.a`
   text-decoration: none;
   font-size: 1.5em;
   width: 25vw;
-  border: #8550b1 solid 1px;
+  
   /*Tel Paysage*/
   @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
     

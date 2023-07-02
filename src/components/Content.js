@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {handleDragStart} from "./styledComponents";
 import Flicking from "@egjs/react-flicking";
 import {imgList} from "../resources/assets";
-import {getDisplayType, getTexts} from "./helpers";
+import {getTexts} from "./helpers";
 import {AutoPlay} from "@egjs/flicking-plugins";
 import arrow from "../resources/icons/arrow.png";
 
@@ -30,6 +30,10 @@ const Arrow = styled.div`
 
   /*Tel Portrait*/
   @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
+    height: 8vw;
+  }
+  /*Tablette*/
+  @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
     height: 8vw;
   }
 `
@@ -261,7 +265,7 @@ function shuffleArray(arr) {
     }
 }
 
-function PhotoCarousel(focusState) {
+function PhotoCarousel() {
     let plugins = [new AutoPlay({duration: 1500, animationDuration: 3000, stopOnHover: false})];
     let imgListLocal = imgList
     shuffleArray(imgListLocal)

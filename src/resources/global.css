@@ -22,3 +22,9 @@ main {
         font-size: 90%;
     }
 }
+/*Tablette*/
+@media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
+    main {
+        font-size: 90%;
+    }
+}
