@@ -23,6 +23,9 @@ const ColorDiv = styled(Div)`
 
 const Img = styled.img`
   height: 9vh;
+  @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
+    height: 10vw;
+  }
 `
 const Item = styled.div`
   display: flex;
@@ -37,6 +40,9 @@ const Item = styled.div`
   }
   /*Tablette*/
   @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
+    width: 50%;
+  }
+  @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
     width: 50%;
   }
   

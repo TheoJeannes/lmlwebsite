@@ -36,6 +36,10 @@ const Lang = styled.div`
   align-self: center;
   width: 10vh;
   justify-content: space-around;
+  @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
+    height: 6vh;
+    width: 15vh;
+  }
 `
 const LangImg = styled.img`
   cursor: pointer;

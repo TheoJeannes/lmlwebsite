@@ -53,6 +53,9 @@ const StyledDiv = styled.div`
     @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
       font-size: 90%;
     }
+    @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
+        font-size: 90%;
+    }
   }
 
   width: 50%;
@@ -64,7 +67,9 @@ const StyledDiv = styled.div`
   @media (max-aspect-ratio: 9/16) and (max-height: 1200px) and (orientation: portrait) {
     width: 90%;
   }
-
+  @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
+    width: 90%;
+  }
    /*Tablette*/
    @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
      width: 90%;
@@ -213,8 +218,22 @@ const Quarter = styled.div`
     width: 45vw;
     height: 45vw;
     padding: 3%;
+    &:hover {
+      width: 47vw;
+      height: 47vw;
+      padding: 1%;
+    }
   }
-
+  @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
+    padding: 3%;
+    width: 30vw;
+    height: 30vw;
+    &:hover {
+      width: 32vw;
+      height: 32vw;
+      padding: 1%;
+    }
+  }
 `
 
 const Item = styled.img`
@@ -241,6 +260,12 @@ const Carousel = styled(Flicking)`
 
   /*Tablette*/
   @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait) {
+    width: 0;
+    margin: 0;
+  }
+
+  /*Tel Paysage*/
+  @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
     width: 0;
     margin: 0;
   }

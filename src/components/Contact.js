@@ -22,6 +22,9 @@ const List = styled.div`
   @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
     flex-direction: column;
   }
+  @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
+    flex-direction: column;
+  }
   
 `
 
@@ -34,7 +37,6 @@ const Link = styled.a`
   
   /*Tel Paysage*/
   @media (min-aspect-ratio: 16/9) and (max-width: 1200px) and (orientation: landscape){
-    
     width: 95%;
     margin-bottom: 3%;
   }
@@ -45,6 +47,10 @@ const Link = styled.a`
   }
   /*Tablette*/
   @media (max-width: 1200px) and (min-aspect-ratio: 9.01/16) and (orientation: portrait){
+    width: 95%;
+    margin-bottom: 3%;
+  }
+  @media (max-aspect-ratio: 16/9) and (max-height: 1200px) and (orientation: landscape){
     width: 95%;
     margin-bottom: 3%;
   }
